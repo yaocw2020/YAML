@@ -26,7 +26,7 @@ metadata:
   name: cn1-vlan10
   namespace: default
 spec:
-  config: '{"cniVersion":"0.3.1","name":"cn1-vlan10","type":"bridge","bridge":"cn1-br","promiscMode":true,"vlan":10,"ipam":{"type":"host-local","ranges":[[{"subnet":"10.10.0.0/16","rangeStart":"10.10.1.20","rangeEnd":"10.10.3.50","gateway":"10.10.0.254"}]]}}'
+  config: '{"cniVersion":"0.3.1","name":"cn1-vlan10","type":"bridge","bridge":"cn1-br","promiscMode":true,"vlan":10,"ipam":{"type":"host-local","ranges":[[{"subnet":"10.10.0.0/16","rangeStart":"10.10.10.1","rangeEnd":"10.10.10.10","gateway":"10.10.0.254"}]]}}'
 ---
 apiVersion: k8s.cni.cncf.io/v1
 kind: NetworkAttachmentDefinition
@@ -36,12 +36,12 @@ metadata:
   name: cn1-vlan20
   namespace: default
 spec:
-  config: '{"cniVersion":"0.3.1","name":"cn1-vlan20","type":"bridge","bridge":"cn1-br","promiscMode":true,"vlan":20,"ipam":{"type":"host-local","ranges":[[{"subnet":"10.10.0.0/16","rangeStart":"10.10.4.20","rangeEnd":"10.10.4.50","gateway":"10.10.0.254"}]]}}'
+  config: '{"cniVersion":"0.3.1","name":"cn1-vlan20","type":"bridge","bridge":"cn1-br","promiscMode":true,"vlan":20,"ipam":{"type":"host-local","ranges":[[{"subnet":"10.10.0.0/16","rangeStart":"10.10.20.1","rangeEnd":"10.10.20.10","gateway":"10.10.0.254"}]]}}'
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: vm-01
+  name: vm-01-vlan10
   namespace: default
   annotations:
     k8s.v1.cni.cncf.io/networks: cn1-vlan10
@@ -53,11 +53,23 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: vm-02
+  name: vm-02-vlan10
   namespace: default
   annotations:
     k8s.v1.cni.cncf.io/networks: cn1-vlan10
 spec:
   containers:
   - name: vm-02
+    image: docker.io/armarny/network
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vm-03-vlan20
+  namespace: default
+  annotations:
+    k8s.v1.cni.cncf.io/networks: cn1-vlan20
+spec:
+  containers:
+  - name: vm-03
     image: docker.io/armarny/network
