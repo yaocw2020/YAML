@@ -1,0 +1,9 @@
+apiVersion: kubefip.k8s.binbash.org/v1
+kind: FloatingIPRange
+metadata:
+  annotations:
+    harvesterClusterName: bmw-cluster
+    harvesterNetworkName: mgmt-untagged
+  name: guest-vlan
+spec:
+  iprange: 192.168.180.0/24

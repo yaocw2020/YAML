@@ -1,0 +1,11 @@
+apiVersion: harvesterhci.io/v1beta1
+kind: Setting
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"harvesterhci.io/v1beta1","kind":"Setting","metadata":{"annotations":{"storage-network.settings.harvesterhci.io/hash":"89995e1961d4f6a59de06c733f006d576f7064c7","storage-network.settings.harvesterhci.io/net-attach-def":"harvester-system/storagenetwork-bw5v2","storage-network.settings.harvesterhci.io/old-net-attach-def":""},"name":"storage-network"},"value":"{\"vlan\":1,\"clusterNetwork\":\"test\",\"range\":\"192.168.89.0/24\"}"}
+    storage-network.settings.harvesterhci.io/hash: 00b59861e3cf7bc52484fcca269d751af47d73f9
+    storage-network.settings.harvesterhci.io/net-attach-def: harvester-system/storagenetwork-jz5bp
+    storage-network.settings.harvesterhci.io/old-net-attach-def: ""
+  name: storage-network
+value: '{"vlan":1,"clusterNetwork":"test","range":"192.168.70.0/24"}'
